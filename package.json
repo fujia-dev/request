@@ -10,12 +10,13 @@
     "url": "https://github.com/fushenguang",
     "email": "fujia.site@outlook.com"
   },
-  "main": "dist/index.js",
-  "module": "dist/@fujia/request.esm.js",
-  "esnext": "dist/@fujia/request.esnext.js",
-  "types": "dist/types/index.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/@fujia/request.esm.js",
+  "umd": "lib/@fujia/request.min.js",
+  "esnext": "lib/@fujia/request.esnext.js",
+  "types": "lib/types/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +26,7 @@
     "lint": "eslint --ext ts 'src/**/*.ts'",
     "docs": "typedoc",
     "docs:publish": "sh scripts/docs-publish.sh",
-    "build": "rimraf dist && tsc --module commonjs && rollup -c rollup.config.ts",
+    "build": "rimraf lib && tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:coverage": "jest --coverage",
