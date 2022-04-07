@@ -1,22 +1,16 @@
-import { Request } from '../index';
-import type { RequestConfig } from '../interface';
+import { Request } from '../src/index';
+import type { RequestConfig } from '../src/interface';
 
-interface FJRequestConfig<T> extends RequestConfig {
-  data?: T;
-}
-
-interface FJResponse<T> {
-  code?: number;
-  message?: string;
-  data?: T;
+interface DogRes {
+  message: string;
+  status: string;
 }
 
 const request = new Request({
-  baseURL: process.env?.BASE_URL || 'https://api.fujia.site/api/v1',
   timeout: 1000 * 60 * 5,
   interceptors: {
     requestInterceptors: (config) => {
-      console.log('instance request interceptor');
+      console.log('interceptor of instance request');
       return config;
     },
     responseInterceptors: (res) => {
@@ -28,17 +22,10 @@ const request = new Request({
 
 /**
  * @description: 函数的描述
- * @interface D 请求参数的interface
- * @interface T 响应结构的intercept
+ * @interface D 响应结构的intercept
  * @param {YWZRequestConfig} config 不管是GET还是POST请求都使用data
  * @returns {Promise}
  */
-export const fjRequest = <D, T = any>(config: FJRequestConfig<D>) => {
-  const { method = 'GET' } = config;
-
-  if (method === 'get' || method === 'GET') {
-    config.params = config.data;
-  }
-
-  return request.request<FJResponse<T>>(config);
+export const fjRequest = (config: RequestConfig) => {
+  return request.request<DogRes>(config);
 };
