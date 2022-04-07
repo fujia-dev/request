@@ -17,3 +17,7 @@ export interface RequestInterceptors {
 export interface RequestConfig extends AxiosRequestConfig {
   interceptors?: RequestInterceptors;
 }
+
+export interface CancelRequestSource {
+  [index: string]: () => void;
+}
