@@ -1,8 +1,9 @@
 {
   "name": "@fujia/request",
   "version": "0.1.0",
-  "description": "A simple Ajax library",
+  "description": "A simple Ajax library build on axios",
   "keywords": [
+    "axios",
     "library"
   ],
   "author": {
@@ -13,8 +14,10 @@
   "main": "lib/index.js",
   "module": "lib/@fujia/request.esm.js",
   "umd": "lib/@fujia/request.min.js",
-  "esnext": "lib/@fujia/request.esnext.js",
   "types": "lib/types/index.d.ts",
+  "exports": {
+    "import": "./lib/@fujia/request.esm.js"
+  },
   "files": [
     "lib"
   ],

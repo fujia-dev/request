@@ -1,4 +1,4 @@
-// import resolve from 'rollup-plugin-node-resolve';
+import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 // import sourceMaps from 'rollup-plugin-sourcemaps';
 import ts from 'rollup-plugin-typescript2';
@@ -31,10 +31,13 @@ export default [
         format: 'umd',
         exports: 'named',
         name: pkg.name,
+        globals: {
+          axios: 'axios',
+        },
       },
     ],
     // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-    external: [],
+    external: ['axios'],
     watch: {
       include: 'src/**',
     },
@@ -52,37 +55,15 @@ export default [
           },
         },
       }),
-      // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
-      commonjs(),
       terser(),
       // Allow node_modules resolution, so you can use 'external' to control
       // which external modules to include in the bundle
       // https://github.com/rollup/rollup-plugin-node-resolve#usage
-      // resolve(),
+      resolve(),
+      commonjs(),
 
       // Resolve source maps to the original source
       // sourceMaps(),
-    ],
-  },
-  {
-    input,
-    output: {
-      file: pkg.esnext,
-      format: 'esm',
-    },
-    plugins: [
-      ts({
-        clean: true,
-        tsconfigOverride: {
-          compilerOptions: {
-            module: 'esnext',
-            target: 'esnext',
-            declaration: true,
-            declarationDir: 'lib',
-          },
-        },
-      }),
-      terser(),
     ],
   },
 ];
