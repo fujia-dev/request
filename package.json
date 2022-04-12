@@ -1,8 +1,9 @@
 {
   "name": "@fujia/request",
-  "version": "0.1.0",
-  "description": "A simple Ajax library",
+  "version": "0.3.0",
+  "description": "A simple Ajax library build on axios",
   "keywords": [
+    "axios",
     "library"
   ],
   "author": {
@@ -10,22 +11,25 @@
     "url": "https://github.com/fushenguang",
     "email": "fujia.site@outlook.com"
   },
-  "main": "dist/index.js",
-  "module": "dist/@fujia/request.esm.js",
-  "esnext": "dist/@fujia/request.esnext.js",
-  "types": "dist/types/index.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/request.esm.js",
+  "umd": "lib/request.min.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    "import": "./lib/request.esm.js"
+  },
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/fujia-dev/request.git"
   },
   "scripts": {
     "lint": "eslint --ext ts 'src/**/*.ts'",
     "docs": "typedoc",
     "docs:publish": "sh scripts/docs-publish.sh",
-    "build": "rimraf dist && tsc --module commonjs && rollup -c rollup.config.ts",
+    "build": "rimraf lib && tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -47,6 +51,9 @@
     "src/**/*.ts": [
       "npm run lint"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "license": "MIT",
   "engines": {
