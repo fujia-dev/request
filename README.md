@@ -1,6 +1,6 @@
 <div align="center">
   <a href="" target="_blank">
-    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2223" width="128" height="128"><path d="M510.787562 507.756465v516.179722L1022.564218 0 1.435782 507.756465h509.35178z" p-id="2224" fill="#1296db"></path></svg>
+    <img src="https://github.com/fujia-blogs/articles/blob/main/assets/fetch.png" alt="@fujia/request" width=200 />
   </a>
 </div>
 
@@ -20,12 +20,73 @@ English | [简体中文](./README.zh-CN.md)
 
 </div>
 
-## Installation
+## Installing
 
-## Usage
+Using npm:
 
-## Documentation
+```sh
+npm i @fujia/request
+```
 
-## Features
+Using yarn:
+
+```sh
+yarn add axios
+```
+
+Using unpkg CDN:
+
+```html
+<script src="https://unpkg.com/@fujia/request@0.2.0/lib/request.min.js"></script>
+```
+
+## Example
+
+```ts
+// ax.ts
+import { Request } from '@fujia/request';
+import type { RequestConfig } from '@fujia/request';
+
+interface DogRes {
+  message: string;
+  status: string;
+}
+
+const request = new Request({
+  timeout: 1000 * 60 * 5,
+  interceptors: {
+    requestInterceptors: (config) => {
+      console.log('interceptor of instance request');
+      return config;
+    },
+    responseInterceptors: (res) => {
+      console.log('interceptor of instance request');
+      return res;
+    },
+  },
+});
+
+export const fjRequest = (config: RequestConfig) => {
+  return request.request<DogRes>(config);
+};
+```
+
+```ts
+import { fjRequest } from './ax';
+
+function main() {
+  fjRequest({
+    url: 'https://dog.ceo/api/breeds/image/random',
+  }).then((res) => {
+    if (res.status === 'success') {
+      console.log(res.message);
+    }
+  });
+}
+
+main();
+```
 
 ## References
+
+1. [axios](https://www.axios-http.cn/docs/intro)
