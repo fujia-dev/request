@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="" target="_blank">
+  <a href="https://www.npmjs.com/package/@fujia/request" target="_blank">
     <img src="https://github.com/fujia-blogs/articles/blob/main/assets/fetch.png" alt="@fujia/request" width=200 />
   </a>
 </div>
@@ -42,6 +42,8 @@ Using unpkg CDN:
 
 ## Example
 
+Configuring your request as you like:
+
 ```ts
 // ax.ts
 import { Request } from '@fujia/request';
@@ -71,7 +73,10 @@ export const fjRequest = (config: RequestConfig) => {
 };
 ```
 
+Using the instance as following:
+
 ```ts
+// dogs.ts
 import { fjRequest } from './ax';
 
 function main() {
