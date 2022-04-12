@@ -37,7 +37,7 @@ yarn add axios
 Using unpkg CDN:
 
 ```html
-<script src="https://unpkg.com/@fujia/request@0.2.0/lib/request.min.js"></script>
+<script src="https://unpkg.com/@fujia/request@0.3.0/lib/request.min.js"></script>
 ```
 
 ## Example

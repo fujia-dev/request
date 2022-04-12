@@ -12,11 +12,11 @@
     "email": "fujia.site@outlook.com"
   },
   "main": "lib/index.js",
-  "module": "lib/@fujia/request.esm.js",
-  "umd": "lib/@fujia/request.min.js",
+  "module": "lib/request.esm.js",
+  "umd": "lib/request.min.js",
   "types": "lib/types/index.d.ts",
   "exports": {
-    "import": "./lib/@fujia/request.esm.js"
+    "import": "./lib/request.esm.js"
   },
   "files": [
     "lib"
