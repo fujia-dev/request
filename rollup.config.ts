@@ -30,7 +30,7 @@ export default [
         file: pkg.umd,
         format: 'umd',
         exports: 'named',
-        name: pkg.name,
+        name: 'request',
         globals: {
           axios: 'axios',
         },
