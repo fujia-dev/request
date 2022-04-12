@@ -23,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/fujia-dev/request.git"
   },
   "scripts": {
     "lint": "eslint --ext ts 'src/**/*.ts'",
